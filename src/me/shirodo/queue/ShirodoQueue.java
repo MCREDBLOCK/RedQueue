@@ -26,11 +26,11 @@ public class ShirodoQueue extends Plugin implements Listener{
 
     private int advert = 0;
     public static String tellMsg;
-    public static String prefix_Info = ChatColor.DARK_GRAY+""+ChatColor.BOLD+"["+ChatColor.RESET+"Shirodo"+ChatColor.DARK_GRAY+ChatColor.BOLD+"]" + ChatColor.BLUE + " ";
-    public static String prefix_Warn = ChatColor.DARK_GRAY+""+ChatColor.BOLD+"["+ChatColor.RESET+"Shirodo"+ChatColor.DARK_GRAY+ChatColor.BOLD+"]" + ChatColor.YELLOW + " ";
-    public static String prefix_Danger = ChatColor.DARK_GRAY+""+ChatColor.BOLD+"["+ChatColor.RESET+"Shirodo"+ChatColor.DARK_GRAY+ChatColor.BOLD+"]" + ChatColor.RED + " ";
-    public static String prefix_Error = ChatColor.DARK_GRAY+""+ChatColor.BOLD+"["+ChatColor.RESET+"Shirodo"+ChatColor.DARK_GRAY+ChatColor.BOLD+"]" + ChatColor.DARK_RED + " ";
-    public static String prefix_Success = ChatColor.DARK_GRAY+""+ChatColor.BOLD+"["+ChatColor.RESET+"Shirodo"+ChatColor.DARK_GRAY+ChatColor.BOLD+"]" + ChatColor.GREEN + " ";
+    public static String prefix_Info = ChatColor.DARK_RED+""+ChatColor.BOLD+"> "+ChatColor.RESET;
+    public static String prefix_Warn = ChatColor.GOLD+""+ChatColor.BOLD+"> "+ChatColor.RESET;
+    public static String prefix_Danger = ChatColor.RED+""+ChatColor.BOLD+"> "+ChatColor.RESET;
+    public static String prefix_Error = ChatColor.DARK_RED+""+ChatColor.BOLD+"> "+ChatColor.RESET;
+    public static String prefix_Success = ChatColor.DARK_GREEN+""+ChatColor.BOLD+"> "+ChatColor.RESET;
 
     @Override
     public void onEnable(){
@@ -48,9 +48,9 @@ public class ShirodoQueue extends Plugin implements Listener{
                 if (!Lists.queue.isEmpty()) {
                     for (String pname : Lists.queue) {
                         i++;
-                        getProxy().getPlayer(pname).sendMessage(new TextComponent(prefix_Info+ChatColor.GRAY+"Sıra bilgisi : "+ChatColor.GRAY+"["+i+"/"+Lists.queue.size()+"]" ));
+                        getProxy().getPlayer(pname).sendMessage(new TextComponent(prefix_Info+"Your position in the queue is "+i+Lists.queue.size()));
                         if (advert == 6) {
-                            getProxy().getPlayer(pname).sendMessage(new TextComponent(prefix_Warn+"Sunucumuza 10TL ve üzeri bağış yaparak öncelikli sıraya girebilir ve çok daha hızlı bir şekilde oyuna katılabilirsin! (Her ay yenilenmelidir)"));
+                            getProxy().getPlayer(pname).sendMessage(new TextComponent(prefix_Warn+"You can buy a rank on store.redblock6.com to get a higher priority in the queue"));
                             advert = 0;
                         }
                         advert++;
@@ -63,11 +63,11 @@ public class ShirodoQueue extends Plugin implements Listener{
                 if (!Lists.prioQueue.isEmpty()) {
                     for (String pname : Lists.prioQueue) {
                         j++;
-                        getProxy().getPlayer(pname).sendMessage(new TextComponent(prefix_Info+ChatColor.RESET+"Öncelikli sıra bilgisi : "+ChatColor.GOLD+"["+j+"/"+Lists.prioQueue.size()+"]" ));
+                        getProxy().getPlayer(pname).sendMessage(new TextComponent(prefix_Warn+"Your queue priority is "+ChatColor.GOLD+j+Lists.prioQueue.size()));
                     }
                 }
                 else{
-                    getLogger().log(Level.INFO, "\u00d6ncelikli s\u0131ra tamamen bo\u015f. Mesaj g\u00f6nderilecek \u00fcye yok.", prefix_Info);
+                    getLogger().log(Level.INFO, "The queue is empty. (No players to send a message to.)", prefix_Info);
                 }
                 sendPlayerToGame();
             }
@@ -97,11 +97,11 @@ public class ShirodoQueue extends Plugin implements Listener{
         ServerInfo anasunucu = ProxyServer.getInstance().getServerInfo("actualserver");
         if (prioPlayer !=null) {
             prioPlayer.connect(anasunucu);
-            prioPlayer.sendMessage(new TextComponent(ChatColor.GOLD +""+ ChatColor.BOLD+"Sunucuya aktarılıyorsun!"));
+            prioPlayer.sendMessage(new TextComponent(ChatColor.GOLD +""+ ChatColor.BOLD+"Sending you to hub"));
         }
         if (player!=null) {
             player.connect(anasunucu);
-            player.sendMessage(new TextComponent(ChatColor.BOLD+"Sunucuya aktarılıyorsun!"));
+            player.sendMessage(new TextComponent(ChatColor.BOLD+"Sending you to hub"));
         }
 
     }
@@ -136,7 +136,7 @@ public class ShirodoQueue extends Plugin implements Listener{
     }
 
     @EventHandler
-    public static void onPlayerDisconnect(PlayerDisconnectEvent quit){
+    public void onPlayerDisconnect(PlayerDisconnectEvent quit){
         DataInspector.removeFromQueue(quit.getPlayer().getName());
     }
     /*-Events-*/
