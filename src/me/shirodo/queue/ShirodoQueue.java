@@ -94,7 +94,7 @@ public class ShirodoQueue extends Plugin implements Listener{
             DataInspector.removeFromQueue(prpl);
         }
 
-        ServerInfo anasunucu = ProxyServer.getInstance().getServerInfo("actualserver");
+        ServerInfo anasunucu = ProxyServer.getInstance().getServerInfo("hub");
         if (prioPlayer !=null) {
             prioPlayer.connect(anasunucu);
             prioPlayer.sendMessage(new TextComponent(ChatColor.GOLD +""+ ChatColor.BOLD+"Sending you to hub"));
