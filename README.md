@@ -25,7 +25,9 @@ There is no config, so if you would like to change what server to connect to, yo
 
 Contributors names and contact info
 
-Mail    :   mburakkaya@yahoo.com
+Original Author EMail    :   mburakkaya@yahoo.com
+Redblock6 Discord : Redblock6#6091
+RYGB Support Server : https://discord.com/invite/wcdMgBBhWy
 
 ## License
 
