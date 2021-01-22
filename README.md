@@ -1,4 +1,4 @@
-# Shirodo Queue
+# RedQueue
 
 A fork of Shirodo Queue and a great way to prevent against bot attacks.
 
