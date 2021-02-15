@@ -97,11 +97,11 @@ public class ShirodoQueue extends Plugin implements Listener{
         ServerInfo anasunucu = ProxyServer.getInstance().getServerInfo("HUB-1");
         if (prioPlayer !=null) {
             prioPlayer.connect(anasunucu);
-            prioPlayer.sendMessage(new TextComponent(ChatColor.translateAlternateColorCodes('&', "&4&l> &fSending you to &c" + anasunucu)));
+            prioPlayer.sendMessage(new TextComponent(ChatColor.translateAlternateColorCodes('&', "&4&l> &fSending you to &c" + anasunucu.getName())));
         }
         if (player!=null) {
             player.connect(anasunucu);
-            player.sendMessage(new TextComponent(ChatColor.translateAlternateColorCodes('&', "&4&l> &fSending you to &c" + anasunucu)));
+            player.sendMessage(new TextComponent(ChatColor.translateAlternateColorCodes('&', "&4&l> &fSending you to &c" + anasunucu.getName())));
         }
 
     }
