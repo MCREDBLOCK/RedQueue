@@ -48,7 +48,7 @@ public class ShirodoQueue extends Plugin implements Listener{
                 if (!Lists.queue.isEmpty()) {
                     for (String pname : Lists.queue) {
                         i++;
-                        getProxy().getPlayer(pname).sendMessage(new TextComponent(prefix_Info+"Your position in the queue is "+i+Lists.queue.size()));
+                        // getProxy().getPlayer(pname).sendMessage(new TextComponent(prefix_Info+"Your position in the queue is "+i+Lists.queue.size()));
                         if (advert == 6) {
                             getProxy().getPlayer(pname).sendMessage(new TextComponent(prefix_Warn+"You can buy a rank on store.redblock6.com to get a higher priority in the queue"));
                             advert = 0;
@@ -94,14 +94,14 @@ public class ShirodoQueue extends Plugin implements Listener{
             DataInspector.removeFromQueue(prpl);
         }
 
-        ServerInfo anasunucu = ProxyServer.getInstance().getServerInfo("hub");
+        ServerInfo anasunucu = ProxyServer.getInstance().getServerInfo("HUB-1");
         if (prioPlayer !=null) {
             prioPlayer.connect(anasunucu);
-            prioPlayer.sendMessage(new TextComponent(ChatColor.GOLD +""+ ChatColor.BOLD+"Sending you to hub"));
+            prioPlayer.sendMessage(new TextComponent(ChatColor.translateAlternateColorCodes('&', "&4&l> &fSending you to &c" + anasunucu)));
         }
         if (player!=null) {
             player.connect(anasunucu);
-            player.sendMessage(new TextComponent(ChatColor.BOLD+"Sending you to hub"));
+            player.sendMessage(new TextComponent(ChatColor.translateAlternateColorCodes('&', "&4&l> &fSending you to &c" + anasunucu)));
         }
 
     }
