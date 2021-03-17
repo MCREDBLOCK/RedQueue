@@ -2,8 +2,8 @@ name: Shirodo-Queue
 author: Shirodo
 description: Queue plugin for my own server.
 main: me.shirodo.queue.ShirodoQueue
-version: 0.2
-api-version: 1.13
+version: 1.3
+api-version: 1.16
 commands:
     list:
         description: Siradaki uyelerin listesini alir
