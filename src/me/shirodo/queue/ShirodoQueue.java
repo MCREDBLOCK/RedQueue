@@ -1,26 +1,23 @@
 package me.shirodo.queue;
 
 
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
 import me.shirodo.commands.COMMAND_liste;
-import me.shirodo.discord.MessageListener;
 import me.shirodo.queue.data.DataInspector;
+import me.shirodo.queue.data.Lists;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ProxyServer;
+import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
-import net.md_5.bungee.api.plugin.Plugin;
-import me.shirodo.queue.data.Lists;
-import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.event.PlayerDisconnectEvent;
 import net.md_5.bungee.api.event.PostLoginEvent;
 import net.md_5.bungee.api.plugin.Listener;
+import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.event.EventHandler;
 
 import javax.security.auth.login.LoginException;
-
-import static me.shirodo.discord.MessageListener.botEnable;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 
 public class ShirodoQueue extends Plugin implements Listener{
 
@@ -34,11 +31,6 @@ public class ShirodoQueue extends Plugin implements Listener{
 
     @Override
     public void onEnable(){
-        try {
-            botEnable();
-        } catch (LoginException e) {
-            getLogger().log(Level.SEVERE, e.toString(), prefix_Danger);
-        }
         RegisterCommands();
         getProxy().getPluginManager().registerListener(this, this);
         ProxyServer.getInstance().getScheduler().schedule(this, new Runnable() {
