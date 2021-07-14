@@ -1,6 +1,7 @@
 # RedQueue
 
 A fork of Shirodo Queue and a great way to prevent against bot attacks.
+No more updates of this plugin will be posted to github to prevent security issues.
 
 ## Description
 
